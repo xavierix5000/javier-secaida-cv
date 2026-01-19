@@ -3,291 +3,270 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV Javier Secaida - Dashboard Profesional</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>CV Javier Secaida - Community Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         :root {
-            --meta-blue: #0084FF;
-            --meta-bg: #F0F2F5;
-            --text-dark: #1C1E21;
+            --primary: #0084FF;
+            --primary-light: #E7F3FF;
+            --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            --glass: rgba(255, 255, 255, 0.85);
+            --text-dark: #1A1A1A;
             --text-gray: #65676B;
-            --glass: rgba(255, 255, 255, 0.9);
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #E9EBEE;
+            background: var(--bg-gradient);
             display: flex;
             justify-content: center;
-            padding: 40px 0;
-            color: var(--text-dark);
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
         }
 
-        /* Contenedor Tamaño Carta Vertical */
-        #cv-carta {
+        /* Formato Tamaño Carta Vertical */
+        .cv-page {
             width: 8.5in;
             height: 11in;
-            background: white;
-            box-shadow: 0 0 40px rgba(0,0,0,0.15);
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 24px;
             display: grid;
             grid-template-columns: 260px 1fr;
-            overflow: hidden;
-            position: relative;
-        }
-
-        /* BARRA LATERAL (SIDEBAR) */
-        .sidebar {
-            background: #ffffff;
-            border-right: 1px solid #ddd;
-            padding: 40px 25px;
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .profile-pic {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            border: 4px solid var(--meta-blue);
-            margin: 0 auto;
-            object-fit: cover;
             box-shadow: var(--shadow);
-        }
-
-        .sidebar-section h3 {
-            font-size: 0.85rem;
-            color: var(--meta-blue);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 5px;
-        }
-
-        .contact-item { font-size: 0.8rem; margin-bottom: 8px; color: var(--text-gray); display: flex; align-items: center; gap: 8px; }
-        
-        .skill-tag {
-            display: inline-block;
-            background: #f0f7ff;
-            color: var(--meta-blue);
-            padding: 5px 10px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin: 0 4px 6px 0;
-        }
-
-        /* CONTENIDO PRINCIPAL */
-        .main-content {
-            padding: 40px;
-            background: #F9FAFB;
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .intro-header {
-            background: linear-gradient(135deg, #0084FF, #0056b3);
-            color: white;
-            padding: 30px;
-            border-radius: 16px;
+            overflow: hidden;
             position: relative;
         }
 
-        .intro-header h1 { font-size: 1.8rem; margin-bottom: 10px; font-weight: 800; }
-        .intro-header p { font-size: 0.88rem; line-height: 1.6; opacity: 0.95; }
-
-        /* Impact Metrics (Reemplazan las barras sin sentido) */
-        .impact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
-        .impact-card {
-            background: white;
-            padding: 15px;
-            border-radius: 12px;
-            border: 1px solid #eee;
-            text-align: center;
-        }
-        .impact-val { font-size: 1.3rem; font-weight: 800; color: var(--meta-blue); display: block; }
-        .impact-label { font-size: 0.7rem; color: var(--text-gray); font-weight: 700; text-transform: uppercase; }
-
-        .section-title {
-            font-size: 1.1rem;
-            font-weight: 800;
-            color: var(--text-dark);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .section-title::after { content: ""; height: 2px; background: #eee; flex-grow: 1; }
-
-        .exp-item {
-            background: white;
-            padding: 18px;
-            border-radius: 12px;
-            border-left: 4px solid var(--meta-blue);
-            margin-bottom: 15px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-        }
-        .exp-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
-        .exp-company { font-weight: 800; color: var(--meta-blue); font-size: 0.95rem; }
-        .exp-date { font-size: 0.75rem; color: var(--text-gray); font-weight: 600; }
-        .exp-role { font-weight: 700; font-size: 0.88rem; display: block; margin-bottom: 8px; }
-        .exp-desc { font-size: 0.82rem; line-height: 1.5; color: var(--text-gray); }
-
-        /* Instagram Post Previews */
-        .portfolio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .insta-card {
-            background: white;
-            border-radius: 10px;
-            border: 1px solid #ddd;
-            overflow: hidden;
-            text-decoration: none;
-            color: inherit;
-        }
-        .insta-img {
-            width: 100%;
-            height: 100px;
-            background-color: #f0f0f0;
-            background-size: cover;
-            background-position: center;
-            border-bottom: 1px solid #eee;
-        }
-        .insta-caption { padding: 8px; font-size: 0.7rem; font-weight: 600; }
-
-        /* Botón de Descarga */
-        .btn-download {
+        /* Botón de descarga flotante (no sale en el PDF) */
+        .no-print-btn {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #1C1E21;
+            bottom: 20px;
+            right: 20px;
+            padding: 12px 24px;
+            background: var(--primary);
             color: white;
             border: none;
-            padding: 15px 25px;
             border-radius: 50px;
             font-weight: 700;
             cursor: pointer;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(0,132,255,0.4);
             z-index: 100;
         }
 
+        /* Barra Lateral */
+        .sidebar {
+            background: rgba(255, 255, 255, 0.4);
+            padding: 40px 25px;
+            border-right: 1px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: var(--shadow);
+            object-fit: cover;
+            background: white;
+        }
+
+        .contact-info h3 { font-size: 0.9rem; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
+        .contact-item { font-size: 0.85rem; margin-bottom: 10px; color: var(--text-dark); display: flex; align-items: center; gap: 8px; }
+
+        .skills-section h3 { font-size: 0.9rem; color: var(--primary); text-transform: uppercase; margin-bottom: 15px; }
+        .skill-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            background: white;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin: 0 5px 8px 0;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* Contenido Principal */
+        .main-content {
+            padding: 40px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .header-intro h1 { font-size: 2.2rem; font-weight: 800; color: var(--text-dark); margin-bottom: 10px; }
+        .header-intro p { font-size: 0.95rem; line-height: 1.6; color: var(--text-gray); }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+        .section-header span { width: 40px; height: 3px; background: var(--primary); border-radius: 2px; }
+
+        .experience-card {
+            background: white;
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(0,0,0,0.03);
+            transition: 0.3s;
+        }
+        .exp-meta { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+        .exp-title { font-weight: 700; color: var(--primary); font-size: 1.05rem; }
+        .exp-date { font-size: 0.8rem; font-weight: 600; color: var(--text-gray); }
+        .exp-desc { font-size: 0.88rem; color: var(--text-gray); line-height: 1.5; }
+
+        /* Métrica de Impacto (Sustituye a las barras) */
+        .impact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .impact-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%);
+            padding: 15px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid var(--primary-light);
+        }
+        .impact-num { font-size: 1.4rem; font-weight: 800; color: var(--primary); display: block; }
+        .impact-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; color: var(--text-gray); }
+
+        /* Instagram Posts Previews */
+        .insta-previews { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .insta-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #eee;
+            text-decoration: none;
+        }
+        .insta-img { width: 100%; height: 120px; background-size: cover; background-position: center; }
+        .insta-info { padding: 10px; font-size: 0.75rem; color: var(--text-dark); font-weight: 600; }
+
         @media print {
-            .btn-download { display: none; }
-            body { padding: 0; background: white; }
-            #cv-carta { box-shadow: none; }
+            .no-print-btn { display: none; }
+            body { background: white; padding: 0; }
+            .cv-page { border: none; box-shadow: none; border-radius: 0; }
         }
     </style>
 </head>
 <body>
 
-    <button class="btn-download" onclick="generarPDF()">Descargar CV en PDF</button>
+    <button class="no-print-btn" onclick="exportPDF()">Descargar CV en PDF</button>
 
-    <div id="cv-carta">
+    <div class="cv-page" id="cv-content">
         <aside class="sidebar">
-            <img src="https://github.com/user-attachments/assets/43111609-3642-403b-8976-bbaf2d53aab0" alt="Javier Secaida" class="profile-pic">
+            <img src="https://drive.google.com/uc?export=view&id=1kPH-1mXFxycWVHm6fQKee65mzLgVKrtk" alt="Javier Secaida" class="profile-photo">
             
-            <div class="sidebar-section">
+            <div class="contact-info">
                 <h3>Contacto</h3>
                 <div class="contact-item">📧 javisecaida17@gmail.com</div>
                 <div class="contact-item">📱 (502) 4536-6006</div>
-                <div class="contact-item">📍 Sacatepéquez, GT</div>
                 <div class="contact-item">📸 @xavi_nelson</div>
+                <div class="contact-item">📍 Sacatepéquez, GT</div>
             </div>
 
-            <div class="sidebar-section">
+            <div class="skills-section">
                 <h3>Habilidades</h3>
-                <div class="skill-tag">Meta Ads</div>
-                <div class="skill-tag">Gestión de Crisis</div>
-                <div class="skill-tag">Diseño Gráfico</div>
-                <div class="skill-tag">Prevención Digital</div>
-                <div class="skill-tag">Copywriting</div>
-                <div class="skill-tag">KPI Analysis</div>
+                <div class="skill-badge">Meta Ads Expert</div>
+                <div class="skill-badge">Community Management</div>
+                <div class="skill-badge">Prevención Digital</div>
+                <div class="skill-badge">Diseño Gráfico</div>
+                <div class="skill-badge">Análisis de Datos</div>
+                <div class="skill-badge">Gestión de Crisis</div>
             </div>
 
-            <div class="sidebar-section">
+            <div class="skills-section">
                 <h3>Formación</h3>
-                <div style="font-size: 0.75rem; line-height: 1.4;">
-                    <p><strong>Ingeniería en Sistemas</strong><br>UMG (2024 - Actual)</p>
-                    <p style="margin-top: 10px;"><strong>Bachiller en CCyL</strong><br>IDEAS Escuintla (2022-2023)</p>
+                <div style="font-size: 0.8rem; line-height: 1.4;">
+                    [span_1](start_span)<p><strong>Ingeniería en Sistemas</strong><br>UMG (2024 - Actual)[span_1](end_span)</p>
+                    [span_2](start_span)<p style="margin-top:10px;"><strong>Bachiller en CCyL</strong><br>IDEAS (2022-2023)[span_2](end_span)</p>
                 </div>
-            </div>
-
-            <div style="margin-top: auto; font-size: 0.65rem; color: #999;">
-                Referencias disponibles a solicitud.
             </div>
         </aside>
 
         <main class="main-content">
-            <header class="intro-header">
-                <h1>Hola 👋 Soy Javier Secaida</h1>
+            <header class="header-intro">
+                <h1>Hola 👋 Soy Javier</h1>
                 <p>
-                    [span_1](start_span)Soy una persona comprometida con la prevención de las ciberviolencias y con la creación de entornos digitales más seguros y positivos. Con experiencia en la transformación de espacios digitales violentos en comunidades de paz, recreación y confianza.[span_1](end_span)
+                    [span_3](start_span)Soy una persona comprometida con la prevención de las ciberviolencias y con la creación de entornos digitales más seguros y positivos[span_3](end_span). [span_4](start_span)Como especialista en comunicación digital, mi enfoque es transformar espacios violentos en comunidades de paz, recreación y confianza[span_4](end_span).
                 </p>
             </header>
 
             <div class="impact-grid">
                 <div class="impact-card">
-                    <span class="impact-val">+33%</span>
-                    <span class="impact-label">Interacciones</span>
+                    <span class="impact-num">33%</span>
+                    <span class="impact-label">Engagement Orgánico</span>
                 </div>
-                <div class="impact-card" style="border-top: 3px solid #31A24C;">
-                    <span class="impact-val">+40%</span>
-                    <span class="impact-label">Alcance Web</span>
+                <div class="impact-card">
+                    <span class="impact-num">+40%</span>
+                    <span class="impact-label">Alcance Mensual</span>
                 </div>
-                <div class="impact-card" style="border-top: 3px solid #f7b928;">
-                    <span class="impact-val">Safe</span>
-                    <span class="impact-label">Moderación</span>
+                <div class="impact-card">
+                    <span class="impact-num">Safe</span>
+                    <span class="impact-label">Moderación Comunitaria</span>
                 </div>
             </div>
 
             <section>
-                <h2 class="section-title">Experiencia Profesional</h2>
+                <div class="section-header"><span></span> Experiencia Destacada</div>
                 
-                <div class="exp-item">
-                    <div class="exp-header">
-                        <span class="exp-company">CREAR ONG - Proyecto Vidas Dignas</span>
-                        <span class="exp-date">Mayo 2025 - Dic. 2025</span>
+                <div class="experience-card" style="border-left: 4px solid var(--primary);">
+                    <div class="exp-meta">
+                        <span class="exp-title">Coordinador Unidad Comunicacional</span>
+                        <span class="exp-date">2025 - Actual</span>
                     </div>
-                    <span class="exp-role">Coordinador de la Unidad Comunicacional</span>
+                    [span_5](start_span)<p style="font-weight: 700; font-size: 0.85rem; margin-bottom: 5px;">CREAR ONG - Proyecto Vidas Dignas[span_5](end_span)</p>
                     <p class="exp-desc">
-                        Liderazgo de estrategias integrales de comunicación para fortalecer la participación juvenil. [span_2](start_span)Gestión de identidad visual y campañas de impacto social.[span_2](end_span)
+                        Lidero estrategias integrales para fortalecer la participación juvenil y la construcción de ambientes digitales dignos. [span_6](start_span)Responsable de la identidad visual y el posicionamiento de campañas sociales de alto impacto[span_6](end_span).
                     </p>
                 </div>
 
-                <div class="exp-item">
-                    <div class="exp-header">
-                        <span class="exp-company">Naciones Unidas (UNFPA)</span>
-                        <span class="exp-date">Ciber Ciudadanos</span>
+                <div class="experience-card">
+                    <div class="exp-meta">
+                        <span class="exp-title">Apoyo Comunicacional</span>
+                        <span class="exp-date">ONU - UNFPA</span>
                     </div>
-                    <span class="exp-role">Apoyo Comunicacional & Gestión Digital</span>
+                    [span_7](start_span)<p style="font-weight: 700; font-size: 0.85rem; margin-bottom: 5px;">Ciber Ciudadanos Jóvenes Construyendo Paz[span_7](end_span)</p>
                     <p class="exp-desc">
-                        [span_3](start_span)Desarrollo de contenido para la prevención de violencia digital y construcción de entornos seguros para juventudes.[span_3](end_span)
+                        [span_8](start_span)Colaboración técnica en la transformación de narrativas digitales y gestión de plataformas para la prevención de violencia en línea en entornos juveniles[span_8](end_span).
                     </p>
                 </div>
 
-                <div class="exp-item">
-                    <div class="exp-header">
-                        <span class="exp-company">iShop Guatemala</span>
-                        <span class="exp-date">Nov. 2023 - Sept. 2024</span>
+                <div class="experience-card">
+                    <div class="exp-meta">
+                        <span class="exp-title">Asesor de Ventas Especializado</span>
+                        <span class="exp-date">2023 - 2024</span>
                     </div>
-                    <span class="exp-role">Asesor de Ventas y Atención</span>
-                    [span_4](start_span)<p class="exp-desc">Especialista en experiencia del cliente y asesoría técnica en tecnología de consumo.[span_4](end_span)</p>
+                    [span_9](start_span)<p style="font-weight: 700; font-size: 0.85rem; margin-bottom: 5px;">iShop Guatemala[span_9](end_span)</p>
+                    [span_10](start_span)<p class="exp-desc">Optimización de experiencia de usuario y cumplimiento de objetivos comerciales mediante el conocimiento técnico de ecosistemas digitales[span_10](end_span).</p>
                 </div>
             </section>
 
             <section>
-                <h2 class="section-title">Portafolio / Meta Ads</h2>
-                <div class="portfolio-grid">
+                <div class="section-header"><span></span> Top Pautas Meta Ads</div>
+                <div class="insta-previews">
                     <a href="https://www.instagram.com/p/DNOL5y2Tmkl/" target="_blank" class="insta-card">
                         <div class="insta-img" style="background-image: url('https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=400&q=80');"></div>
-                        <div class="insta-caption">Campaña Prevención Social ↗</div>
+                        <div class="insta-info">Campaña Prevención Social ↗</div>
                     </a>
                     <a href="https://www.instagram.com/p/DLAwS2Dx6eQ/" target="_blank" class="insta-card">
                         <div class="insta-img" style="background-image: url('https://images.unsplash.com/photo-1551818255-e6e10975bc17?auto=format&fit=crop&w=400&q=80');"></div>
-                        <div class="insta-caption">Gestión Participación Juvenil ↗</div>
+                        <div class="insta-info">Estrategia Participación Juvenil ↗</div>
                     </a>
                 </div>
             </section>
@@ -295,8 +274,8 @@
     </div>
 
     <script>
-        function generarPDF() {
-            const element = document.getElementById('cv-carta');
+        function exportPDF() {
+            const element = document.getElementById('cv-content');
             const opt = {
                 margin: 0,
                 filename: 'CV_Javier_Secaida_2026.pdf',
