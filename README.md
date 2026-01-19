@@ -17,7 +17,7 @@
             --green-trend: #31A24C;
             --orange-trend: #F7B928;
             --purple-accent: #8E2DE2;
-            --glass-border: 1px solid rgba(255, 255, 255, 0.4);
+            --glass-border: 1px solid rgba(255, 255, 255, 0.4); 
             --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
             --shadow-md: 0 8px 16px rgba(0,0,0,0.06);
             --radius-lg: 16px;
@@ -534,7 +534,7 @@
         <aside class="sidebar">
             <div class="profile-header">
                 <div class="avatar-ring">
-                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Javier Secaida" class="avatar-img">
+                    <img src="![image](https://github.com/user-attachments/assets/d58b3d5a-0666-4d89-bf48-462cfd929c34)" alt="Javier Secaida" class="avatar-img">
                     <div class="status-dot"></div>
                 </div>
                 <h2 class="profile-name">Javier Secaida</h2>
@@ -572,7 +572,7 @@
             </ul>
 
             <div class="sidebar-footer">
-                <button class="btn-ref">Solicitar Referencias</button>
+                <button class="btn-ref">Solivitar referencias</button>
             </div>
         </aside>
 
@@ -622,7 +622,7 @@
                         <svg viewBox="0 0 24 24" style="width:24px;fill:currentColor;"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg>
                     </div>
                     <div class="exp-meta">
-                        <h3>Coordinador de Unidad Comunicacional <span class="badge ngo">CREAR ONG</span></h3>
+                        <h3>Coordinador de Unidad Comunicacional <span class="badge ngo">Crear ONG</span></h3>
                         <h4>Community Manager & Estratega</h4>
                         <span class="exp-date">Mayo 2025 - Diciembre 2025</span>
                     </div>
@@ -679,12 +679,14 @@
                 <p style="font-size:0.75rem; color:#666; margin-bottom:10px;">Ejemplos de campañas gestionadas:</p>
                 <div class="ad-preview-grid">
                     <a href="https://www.instagram.com/p/DNOL5y2Tmkl/" target="_blank" style="text-decoration:none;">
-                        <div class="ad-thumb" style="background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80');">
+                        <div class="ad-thumb" style="background-image: url('<img width="1306" height="1640" alt="image" src="https://github.com/user-attachments/assets/fa79e0ef-d3e9-4ca7-a7fb-b94a4ac72afb" />
+');">
                             <div class="ad-overlay">Ver Post ↗</div>
                         </div>
                     </a>
                     <a href="https://www.instagram.com/p/DLAwS2Dx6eQ/" target="_blank" style="text-decoration:none;">
-                        <div class="ad-thumb" style="background-image: url('https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80');">
+                        <div class="ad-thumb" style="background-image: url('<img width="1306" height="1640" alt="image" src="https://github.com/user-attachments/assets/fa2fcf69-8a89-49ce-bee5-4fe5fc03f7aa" />
+');">
                             <div class="ad-overlay">Ver Post ↗</div>
                         </div>
                     </a>
